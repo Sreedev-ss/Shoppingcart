@@ -1,0 +1,35 @@
+<section>
+    <div class="container mt-5">
+        <div class="row">
+            {{#if user}}
+            {{#each products}}
+            <div class="col-lg-3 col-sm-6 col-12 pt-5 d-flex justify-content-center">
+                <div class="card" style="width: 18rem;">
+                    <img src={{this.image}} class="card-img-top img-fluid" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{this.name}}</h5>
+                        <p class="card-text">{{this.description}}</p>
+                        <a href="/" class="btn btn-primary">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+
+            {{else}}
+            {{#each products}}
+            <div class="col-lg-3 col-sm-6 col-12 pt-5 d-flex justify-content-center">
+                <div class="card" style="width: 18rem;">
+                    <img src={{this.image}} class="card-img-top img-fluid" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{this.name}}</h5>
+                        <p class="card-text">{{this.description}}</p>
+                        <a href="/" class="btn btn-primary disabled">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+            {{/if}}
+
+        </div>
+    </div>
+</section>
