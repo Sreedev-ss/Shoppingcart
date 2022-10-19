@@ -1,6 +1,10 @@
 module.exports={
-    USER_COLLECTION:{
-        email:'sreedev@gmail.com',
-        password:'$2b$10$6PY3FCLOmw32C8R9BeMrruJ9vS81IpqU6inwV5bn9DXLWS7SodBe2'
+    PRODUCT_COLLECTION:'product',
+
+    USER_COLLECTION:'user',
+
+    ADMIN_COLLECTION:{
+        email:"admin123@gmail.com",
+        password:"$2b$10$EBA9/lSYCA/P1aJeJKfJzeq2w92mrfgThYZuaKXG0hynJByxfZT3."
     }
 }
