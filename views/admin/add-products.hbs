@@ -7,19 +7,22 @@
                     <label for="">Name</label>
                     <input type="text" name="name" class="form-control" required>
 
-                     <label for="">Category</label>
+                    <label for="">Category</label>
                     <input type="text" name="category" class="form-control" required>
 
-                     <label for="">Price</label>
+                    <label for="">Price</label>
                     <input type="number" name="price" class="form-control" required>
 
-                     <label for="">Description</label>
+                    <label for="">Description</label>
                     <input type="text" name="description" class="form-control" required><br>
 
-                     <img id="imgView" class="img-fluid mb-4" src="/product-images/{{products._id}}.jpg" alt="" style="width: 100px; height: 100px; object-fit: contain; border-radius: 4px; border: solid 1px rgba(0, 0, 0, 0.458);">
-                     <label for="">Image</label>
+                    <img id="imgView" class="img-fluid mb-4" src="/product-images/{{products._id}}.jpg" alt=""
+                        style="width: 100px; height: 100px; object-fit: contain; border-radius: 4px; border: solid 1px rgba(0, 0, 0, 0.458);">
+                    <label for="">Image</label>
+
                     <input type="file" name="Image" class="form-control" onchange="viewImage(event)" required><br>
-                    <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure want to add this product ?')">Submit</button>
+                    <button type="submit" class="btn btn-primary"
+                        onclick="return confirm('Are you sure want to add this product ?')">Submit</button>
                 </form>
             </div>
         </div>
@@ -27,7 +30,9 @@
 </section>
 
 <script>
-    function viewImage(event){
-        document.getElementById('imgView').src=URL.createObjectURL(event.target.files[0])
+
+    function viewImage(event) {
+        document.getElementById('imgView').src = URL.createObjectURL(event.target.files[0])
     }
+
 </script>

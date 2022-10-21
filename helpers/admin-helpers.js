@@ -7,8 +7,6 @@ module.exports = {
 
     doLogin: (adminData) => {
         return new Promise(async (resolve, reject) => {
-            // collection.ADMIN_COLLECTION.password=await bcrypt.hash(adminData.password,10);
-            // console.log(collection.ADMIN_COLLECTION.password);
             console.log(collection.ADMIN_COLLECTION.email + ' : ' + adminData.email)
             var data = collection.ADMIN_COLLECTION
 
@@ -35,27 +33,25 @@ module.exports = {
 
     addUsers: (user) => {
         return new Promise((resolve, reject) => {
-            
-        
-        console.log(user);
-        let response = {}
-        db.get().collection(collection.USER_COLLECTION).find({ email: user.email }).toArray().then(async(res_exist) => {
-            
-            if (res_exist.length != 0) {
-                resolve({ status: false })
-            }
-            else {
 
-                user.password = await bcrypt.hash(user.password, 10)
-                db.get().collection(collection.USER_COLLECTION).insertOne(user).then((data) => {
-                    console.log(data);
-                    response.dataId = data.insertedId
-                    response.status = true
-                    resolve(response)
-                })
-            }
+            let response = {}
+            db.get().collection(collection.USER_COLLECTION).find({ email: user.email }).toArray().then(async (res_exist) => {
+
+                if (res_exist.length != 0) {
+                    resolve({ status: false })
+                }
+                else {
+
+                    user.password = await bcrypt.hash(user.password, 10)
+                    db.get().collection(collection.USER_COLLECTION).insertOne(user).then((data) => {
+                        console.log(data);
+                        response.dataId = data.insertedId
+                        response.status = true
+                        resolve(response)
+                    })
+                }
+            })
         })
-    })
     },
 
 

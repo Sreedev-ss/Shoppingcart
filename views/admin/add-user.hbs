@@ -8,19 +8,19 @@
                     <div id="Error" class="text-center"></div>
 
                     <label for="">First Name</label>
-                    <input type="text" id="fName" required name="firstName" class="form-control" >
+                    <input type="text" id="fName" required name="firstName" class="form-control">
 
                     <label for="">Second Name</label>
-                    <input type="text" id="lName" required name="lastName" class="form-control" >
+                    <input type="text" id="lName" required name="lastName" class="form-control">
 
-                     <label for="">Email</label>
-                    <input type="text" id="email" required name="email" class="form-control" >
+                    <label for="">Email</label>
+                    <input type="text" id="email" required name="email" class="form-control">
 
-                     <label for="">Password</label>
-                    <input type="password" id="password"  required name="password" class="form-control"><br>
-                    
+                    <label for="">Password</label>
+                    <input type="password" id="password" required name="password" class="form-control"><br>
+
                 </form>
-                    <button type="button" class="btn btn-primary" onclick="submit()">Submit</button>
+                <button type="button" class="btn btn-primary" onclick="submit()">Submit</button>
             </div>
         </div>
     </div>
@@ -28,51 +28,48 @@
 
 <script>
 
-function submit(){
-    let firstName = document.getElementById('fName').value.trim()
-    let lastName = document.getElementById('lName').value.trim()
-    let email = document.getElementById('email').value.trim()
-    let password = document.getElementById('password').value.trim()
+    function submit() {
 
-    fetch('/admin/add-user',{
-            method:'POST',
-            headers:{
-                'Content-Type':'application/json',
+        let firstName = document.getElementById('fName').value.trim()
+        let lastName = document.getElementById('lName').value.trim()
+        let email = document.getElementById('email').value.trim()
+        let password = document.getElementById('password').value.trim()
+
+
+        fetch('/admin/add-user', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
             },
-            body:JSON.stringify({
-                firstName:firstName,
-                lastName:lastName,
-                email:email,
-                password:password
+            body: JSON.stringify({
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                password: password
 
             })
-            
+
         })
-        .then((res)=>res.json())
-        .then((res)=>{
+            .then((res) => res.json())
+            .then((res) => {
 
-            if(res.vv == "Successfully added User"){
-               
-                setTimeout(()=>{
-                    window.location.href = '/admin/view-user'
-                },700)
+                if (res.vv == "Successfully added User") {
 
-                existError.innerText = res.vv
-                existError.style.color = "rgb(35 148 46)"
-                
-                
-                
-            }
-            else{            
-                
-            let existError = document.getElementById('Error')
-            existError.innerText = res.vv
-            existError.style.color = "rgb(255, 104, 104)"
+                    setTimeout(() => {
+                        window.location.href = '/admin/view-user'
+                    }, 700)
 
-            }
-        })
+                    existError.innerText = res.vv
+                    existError.style.color = "rgb(35 148 46)"
 
+                } else {
 
-}
+                    let existError = document.getElementById('Error')
+                    existError.innerText = res.vv
+                    existError.style.color = "rgb(255, 104, 104)"
+
+                }
+            })
+    }
 
 </script>

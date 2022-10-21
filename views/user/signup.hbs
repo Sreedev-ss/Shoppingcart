@@ -1,6 +1,5 @@
-<!-- Section: Design Block -->
-<section class="">
-    <!-- Jumbotron -->
+
+<section>
     <div class="px-4 py-5 px-md-5 text-center text-lg-start" style="background-color: hsl(0, 0%, 100%)">
         <div class="container mt-5">
             <div class="row gx-lg-5 align-items-center mt-5">
@@ -13,24 +12,22 @@
                     </p>
                 </div>
 
-                        
-
                 <div class="col-lg-6 mb-5 mb-lg-0">
                     <div class="card">
                         <div class="card-body py-5 px-md-5">
+
                             <form action="/signup" method="post">
-                                <!-- 2 column grid layout with text inputs for the first and last names -->
-                                <div class="row align-items-start">
+                                <div class="row align-items-center">
                                     <div class="col-md-12 mb-2">
                                         <div class="divider d-flex justify-content-center align-items-center my-4">
                                             <h3 class="text-center fw-bold mx-3 mb-0">Sign up</h3>
                                         </div>
                                     </div>
-
-                                        <div class="col-12 text-center" id="existError"></div>
+                                    
+                                    {{!-- User Exist Display --}}
+                                    <div class="col-12 text-center" id="existError"></div>
 
                                     <div class="col-md-6 mb-2">
-
                                         <div class="form-outline ">
                                             <p id="input_valid"></p>
                                             <input type="text" name="firstName" id="fName" placeholder="First name"
@@ -49,30 +46,24 @@
                                     </div>
                                 </div>
 
-                                <!-- Email input -->
                                 <div class="form-outline mb-2 input-cont">
                                     <p id="input_valid"></p>
                                     <input type="text" id="email" name="email" placeholder="Email address"
                                         class="form-control" />
-
                                     <label class="form-label" for="form3Example3">Email</label>
                                 </div>
 
-                                <!-- Password input -->
                                 <div class="form-outline mb-4 input-cont">
-
                                     <p id="input_valid"></p>
                                     <input type="password" id="password" name="password" placeholder="Password"
                                         class="form-control" />
-
                                     <label class="form-label" for="form3Example4">Password</label>
                                 </div>
-                                <div class="form-outline mb-4 input-cont">
 
+                                <div class="form-outline mb-4 input-cont">
                                     <p id="input_valid"></p>
                                     <input type="password" id="confirmPassword" name="password"
                                         placeholder="Confirm Password" class="form-control" />
-
                                     <label class="form-label" for="form3Example4">Confirm Password</label>
                                 </div>
 
@@ -86,7 +77,6 @@
                                             class="link-danger">Click here</a></p>
                                 </div>
 
-
                             </form>
                         </div>
                     </div>
@@ -94,10 +84,8 @@
             </div>
         </div>
     </div>
-    <!-- Jumbotron -->
 </section>
 
-<!-- Section: Design Block -->
 <script>
 
     function validator() {
@@ -202,47 +190,47 @@
             error5.style.color = 'rgb(255, 104, 104)'
             flag = 2
         }
-        
-        if ( flag == 1){
-            submit(fNameValue , lNameValue ,emailValue, passwordValue)
+
+        if (flag == 1) {
+            submit(fNameValue, lNameValue, emailValue, passwordValue)
         }
-    
+
     }
     function submit(fName, lName, email, password) {
-        fetch('/signup',{
-            method:'POST',
-            headers:{
-                'Content-Type':'application/json',
+        fetch('/signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
 
             },
-            body:JSON.stringify({
-                firstName:fName,
-                lastName:lName,
-                email:email,
-                password:password
+            body: JSON.stringify({
+                firstName: fName,
+                lastName: lName,
+                email: email,
+                password: password
 
             })
-            
-        })
-        .then((res)=>res.json())
-        .then((res)=>{
 
-            if(res.ll == "Login Successful"){
-                setTimeout(()=>{
-                    window.location.href = '/'
-                },500)
-                
-                var existError = document.getElementById('existError')
-                existError.innerText = res.ll
-                existError.style.color = "rgb(35 148 46)"
-                
-            }
-            else{            
-            var existError = document.getElementById('existError')
-            existError.innerText = res.ll
-            existError.style.color = "rgb(255, 104, 104)"
-            }
         })
+            .then((res) => res.json())
+            .then((res) => {
+
+                if (res.ll == "Login Successful") {
+                    setTimeout(() => {
+                        window.location.href = '/'
+                    }, 500)
+
+                    var existError = document.getElementById('existError')
+                    existError.innerText = res.ll
+                    existError.style.color = "rgb(35 148 46)"
+
+                }
+                else {
+                    var existError = document.getElementById('existError')
+                    existError.innerText = res.ll
+                    existError.style.color = "rgb(255, 104, 104)"
+                }
+            })
     }
 
 </script>

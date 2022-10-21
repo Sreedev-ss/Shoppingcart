@@ -8,6 +8,7 @@
 
     }
 
+
     :root {
         --c-brand: #005bc5;
         --f-main: "Bai Jamjuree", sans-serif;
@@ -49,17 +50,9 @@
                         <a class="nav-link " href="/">Your Orders</a>
                     </li>
                     {{/if}}
-                    {{!-- {{#if userSign}}
-                    <li class="nav-item">
-                        <a class="nav-link " href="/">Cart</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="/">Your Orders</a>
-                    </li>
-                    {{/if}} --}}
-                    
-                    
                 </ul>
+
+
                 <div class="dropdown ">
                     <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1"
                         data-bs-toggle="dropdown" aria-expanded="false">
@@ -68,27 +61,15 @@
                         {{else}}
                         Accounts
                         {{/if}}
-                        {{!-- {{#if userSign}}
-                        {{userSign.firstName}} {{userSign.lastName}}
-                        {{else}}
-                        Accounts
-                        {{/if}} --}}
                     </button>
-                    <ul class="dropdown-menu mt-2 " aria-labelledby="dropdownMenuButton1">
+                    <ul class="dropdown-menu mt-2 mx-auto" aria-labelledby="dropdownMenuButton1">
                         {{#if user}}
-                        <li><a class="dropdown-item text-dark text-center justify-content-end" href="/logout">Logout</a>
+                        <li><a class="dropdown-item text-dark text-center " href="/logout">Logout</a>
                         </li>
                         {{else}}
                         <li><a class="dropdown-item text-dark text-center" href="/login">Login</a></li>
                         {{/if}}
-
-                         {{!-- {{#if userSign}}
-                        <li><a class="dropdown-item text-dark text-center justify-content-end" href="/logout">Logout</a>
-                        </li>
-                        {{else}}
-                        <li><a class="dropdown-item text-dark text-center" href="/login">Login</a></li>
-                        {{/if}}
-                    </ul> --}}
+                    </ul>
                 </div>
             </div>
         </div>
